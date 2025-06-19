@@ -116,18 +116,6 @@
     // Legacy resource mapping
     const legacyResources = [
       {
-        domain: "files.hallernet.org",
-        label: "files.hallernet.org",
-        html: `
-          <p><strong>This is the legacy file store of the hallerNet platform. It used to be served from project-owned hardware and was subsequently moved to Github. Now available at:</strong></p>
-          <ul>
-            <li><a href="https://github.com/Republique-des-Lettres/files.hallernet.org" target="_blank"><code>Republique-des-Lettres/files.hallernet.org</code></a> (repository)</li>
-            <li><a href="http://republique-des-lettres.github.io/files.hallernet.org" target="_blank"><code>republique-des-lettres.github.io/files.hallernet.org</code></a> (file index)</li>
-          </ul>
-          <p>Last updated: 2025-06-19</p>
-        `
-      },
-      {
         domain: "albrecht-von-haller.ch",
         label: "albrecht-von-haller.ch",
         html: `
@@ -135,9 +123,22 @@
           <table>
             <tr><th>Resource</th><th>New Location</th></tr>
             <tr><td><code>albrecht-von-haller.ch</code> D</td><td><a href="https://files.hallernet.republique-des-lettres.ch/legacy/albrecht-von-haller.ch/de/index.php" target="_blank">https://files.hallernet.republique-des-lettres.ch/legacy/albrecht-von-haller.ch/de/index.php</a></td></tr>
-            <tr><td><code>albrecht-von-haller.ch</code> D</td><td><a href="https://files.hallernet.republique-des-lettres.ch/legacy/albrecht-von-haller.ch/e/index.php" target="_blank">https://files.hallernet.republique-des-lettres.ch/legacy/albrecht-von-haller.ch/e/index.php</a></td></tr>
+            <tr><td><code>albrecht-von-haller.ch</code> E</td><td><a href="https://files.hallernet.republique-des-lettres.ch/legacy/albrecht-von-haller.ch/e/index.php" target="_blank">https://files.hallernet.republique-des-lettres.ch/legacy/albrecht-von-haller.ch/e/index.php</a></td></tr>
             <tr><td><code>albrecht-von-haller.ch</code> F</td><td><a href="https://files.hallernet.republique-des-lettres.ch/legacy/albrecht-von-haller.ch/f/index.php" target="_blank">https://files.hallernet.republique-des-lettres.ch/legacy/albrecht-von-haller.ch/f/index.php</a></td></tr>
           </table>
+          <p>Last updated: 2025-06-19</p>
+        `
+      },      
+      {
+        domain: "files.hallernet.org",
+        label: "files.hallernet.org",
+        html: `
+          <p>This is the legacy file store of the hallerNet platform. It used to be served from project-owned hardware and was subsequently moved to Github.</p>
+          <p><strong>Now available at:</strong></p>
+          <ul>
+            <li><a href="https://github.com/Republique-des-Lettres/files.hallernet.org" target="_blank"><code>Republique-des-Lettres/files.hallernet.org</code></a> (repository)</li>
+            <li><a href="http://republique-des-lettres.github.io/files.hallernet.org" target="_blank"><code>republique-des-lettres.github.io/files.hallernet.org</code></a> (file index)</li>
+          </ul>
           <p>Last updated: 2025-06-19</p>
         `
       },
@@ -147,7 +148,16 @@
         html: `
           <p><em>Domain to be configured.</em></p>
         `
-      }
+      },
+      {
+        domain: "images.hallernet.org",
+        label: "images.hallernet.org",
+        html: `
+          <p>hallerNet IIIF server</p>
+          <p>Initially, the hallerNet platform maintained its own IIIF server (using IIPImage). Following the migration to iiif.ub.unibe.ch the service was discontinued.</p>
+          <p>Last updated: 2025-06-19</p>
+        `
+      },
     ];
 
     // Utility: get the domain from a URL
