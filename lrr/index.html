@@ -92,11 +92,33 @@
     a:hover {
       text-decoration: underline;
     }
+    details {
+      margin-top: 2em;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #f6f8fa;
+      padding: 1em 1.5em;
+    }
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      margin: -1em -1.5em 1em -1.5em;
+      padding: 1em 1.5em;
+      background: #eaeef2;
+      border-radius: 6px 6px 0 0;
+      border-bottom: 1px solid #d0d7de;
+      font-size: 1.08em;
+    }    
     @media (max-width: 600px) {
       .container {
         padding: 8px;
       }
-      dd, dt {
+      dd, dt, details {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+      summary {
         padding-left: 8px;
         padding-right: 8px;
       }
@@ -111,6 +133,12 @@
     </dl>
     <hr/>
     <p><strong><a href="https://republique-des-lettres.ch" target="_blank">République des Lettres (from 2025)</a></strong></p>
+    <details>
+      <summary>Inspect request</summary>
+      <div id="inspect-headers">
+        <!-- JS will populate the table here -->
+      </div>
+    </details>
   </div>
   <script>
     // Legacy resource mapping
@@ -119,7 +147,8 @@
         domain: "albrecht-von-haller.ch",
         label: "albrecht-von-haller.ch",
         html: `
-          <p>Tri-lingual website "albrecht-von-haller.ch"</p>
+          <p>Most contents of the tri-lingual website "albrecht-von-haller.ch" have been brought over to <a href="https://republique-des-lettres.ch">République des Lettres</a>.</p>
+          <p>If you are looking for the original "albrecht-von-haller.ch" page, you will find it here (to facilitate longterm availability, the copy does not retain any database functionalities):</p>
           <table>
             <tr><th>Resource</th><th>New Location</th></tr>
             <tr><td><code>albrecht-von-haller.ch</code> D</td><td><a href="https://files.hallernet.republique-des-lettres.ch/legacy/albrecht-von-haller.ch/de/index.php" target="_blank">https://files.hallernet.republique-des-lettres.ch/legacy/albrecht-von-haller.ch/de/index.php</a></td></tr>
@@ -202,6 +231,29 @@
       document.getElementById(`legacy-dt-${idx}`).scrollIntoView({ behavior: "smooth", block: "center" });
     }
 
+    // Show request headers/info accessible from JS
+    function renderHeadersTable() {
+      // Only headers you can access from browser JS:
+      const headers = {
+        "Host": location.host,
+        "User-Agent": navigator.userAgent,
+        "Referer": document.referrer || "(none)",
+        "Location (URL)": location.href,
+        "Origin": location.origin,
+        "Language": navigator.language,
+        "Platform": navigator.platform,
+        "Cookies enabled": navigator.cookieEnabled ? "Yes" : "No",
+        "Do Not Track": navigator.doNotTrack === "1" ? "Yes" : (navigator.doNotTrack === "0" ? "No" : "Unknown")
+      };
+
+      let table = '<table><tr><th>Header / Info</th><th>Value</th></tr>';
+      for (const [key, value] of Object.entries(headers)) {
+        table += `<tr><td>${key}</td><td style="word-break:break-all">${value}</td></tr>`;
+      }
+      table += '</table>';
+      document.getElementById('inspect-headers').innerHTML = table;
+    }
+
     // On load: build the list, auto-expand if matching referrer
     document.addEventListener("DOMContentLoaded", () => {
       const dl = document.getElementById('legacy-dl');
@@ -214,6 +266,8 @@
       if (matchIdx >= 0) {
         toggle(matchIdx);
       }
+
+      renderHeadersTable();
     });
   </script>
 </body>
